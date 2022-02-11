@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav { padding: 0 15px }
+.page-footer { padding: 0 }
+.container {
+  max-width: 1332px;
+  margin: 0 auto;
+}
+.content {
+  min-height: calc(100vh - 64px - 50px);
+  padding: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  height: auto;
+  width: 300px;
+  transition: all 0.4s ease;
+}
+.card:hover { transform: scale(1.1) }
+
+.card .card-content { padding: 15px }
+.card-content { flex-grow: 1 }
+.card-action .price { font-size: 22px }
