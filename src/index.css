@@ -19,11 +19,11 @@ nav { padding: 0 15px }
   margin: 0 auto;
 }
 .content {
-  min-height: calc(100vh - 64px - 50px);
   padding: 1.5rem 0;
+  min-height: calc(100vh - 64px - 50px);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card {
@@ -39,3 +39,24 @@ nav { padding: 0 15px }
 .card .card-content { padding: 15px }
 .card-content { flex-grow: 1 }
 .card-action .price { font-size: 22px }
+
+
+
+.cart {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem;
+}
+
+@media (min-width: 767px) {
+  .cart {
+    top: 5rem;
+    bottom: unset;
+    left: unset;
+    right: 2rem
+  }
+}
