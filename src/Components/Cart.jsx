@@ -8,7 +8,7 @@ export default function Cart(props) {
         >
             <i className="material-icons">shopping_cart</i>
             { quantity ? (
-                <span className="cart-quantity">{quantity}</span>
+                <span>{quantity}</span>
             ) : null}
         </div>
     );

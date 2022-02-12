@@ -39,6 +39,17 @@ export default function Shop() {
         }
     };
 
+    const removeCartItem = (itemId) => {
+        const newOrder = order.filter(el => el.id !== itemId);
+        setOrder(newOrder);
+    };
+
+    const quantityChanger = (e) => {
+        if (e.target.textContent === 'remove') {
+            
+        }  
+    };
+
     const handleCartShow = () => {
         setCartShow(!isCartShow);
     };
@@ -67,6 +78,7 @@ export default function Shop() {
             { isCartShow && <CartList 
                                 order={order} 
                                 handleCartShow={handleCartShow}
+                                removeCartItem={removeCartItem}
                             />
             }
         </main>

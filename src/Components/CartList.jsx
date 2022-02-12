@@ -1,7 +1,11 @@
 import CartItem from "./CartItem"
 
 export default function CartList(props) {
-    const {order = [], handleCartShow = Function.prototype} = props;
+    const {
+        order = [], 
+        handleCartShow = Function.prototype,
+        removeCartItem = Function.prototype
+    } = props;
     const totalPrice = order.reduce((sum, el) => sum + el.price, 0);
 
     return (
@@ -13,10 +17,14 @@ export default function CartList(props) {
             </li>
             {
                 order.length ? order.map(item => (
-                    <CartItem key={item.id} {...item}/>
+                    <CartItem 
+                        key={item.id} 
+                        {...item} 
+                        removeCartItem={removeCartItem}
+                    />
                 )) : <li className="collection-item">Cart is empty</li>
             }
-            <li className="collection-item active center">Total: {totalPrice} $</li>
+            <li className="collection-item active center">Total: {totalPrice} ₽</li>
         </ul>
     )
 }

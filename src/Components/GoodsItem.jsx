@@ -22,7 +22,7 @@ export default function GoodsItem(props) {
                     className="btn"
                     onClick={() => addToCart({id, name, price})}
                 >Buy</button>
-                <span className="right price">{price}$</span>
+                <span className="right price">{price} ₽</span>
             </div>
         </div>
     )
