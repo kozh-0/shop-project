@@ -1,5 +1,12 @@
 export default function GoodsItem(props) {
-    const { name, description, price, full_background, addItem } = props;
+    const { 
+        id, 
+        name, 
+        description, 
+        price, 
+        full_background, 
+        addToCart = Function.prototype
+    } = props;
 
     return (
         <div className="card">
@@ -13,7 +20,7 @@ export default function GoodsItem(props) {
             <div className="card-action">
                 <button 
                     className="btn"
-                    onClick={() => addItem({name})}
+                    onClick={() => addToCart({id, name, price})}
                 >Buy</button>
                 <span className="right price">{price}$</span>
             </div>
