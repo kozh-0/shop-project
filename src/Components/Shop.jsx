@@ -14,19 +14,18 @@ export default function Shop() {
     const [isCartShow, setCartShow] = useState(false);
 
     // Приходит {id, name, price}
-    const addToCart = (item) => {
+    const addToCart = (obj) => {
         // Нет = -1; Нашел = индекс элемента
-        const itemIndex = order.findIndex(el => el.id === item.id);
+        const objIndex = order.findIndex(el => el.id === obj.id);
 
-        if (itemIndex < 0) {
-            const newItem = { ...item, quantity: 1 };
+        if (objIndex < 0) {
+            const newItem = { ...obj, quantity: 1 };
             setOrder( [...order, newItem] );
         } else {
             const newOrder = order.map((el, index) => {
-                if (index === itemIndex) {
+                if (index === objIndex) {
                     return {
                         ...el,
-                        price: (el.price + (el.price / el.quantity)),
                         quantity: el.quantity + 1
                     }
                 } else {
@@ -38,21 +37,41 @@ export default function Shop() {
             setOrder(newOrder);
         }
     };
+    
+    const incrQuantity = (itemId) => {
+        const newOrder = order.map(el => {
+            if (el.id === itemId) {
+                return {
+                    ...el,
+                    quantity: el.quantity + 1
+                }
+            } else {
+                return el;
+            }
+        })
+        setOrder(newOrder)
+    };
+    const decrQuantity = (itemId) => {
+        const newOrder = order.map(el => {
+            if (el.id === itemId) {
+                const newQuantity = el.quantity - 1;
+                return {
+                    ...el,
+                    quantity: newQuantity >= 0 ? newQuantity : 0
+                }
+            } else {
+                return el;
+            }
+        })
+        setOrder(newOrder)
+    };
 
     const removeCartItem = (itemId) => {
         const newOrder = order.filter(el => el.id !== itemId);
         setOrder(newOrder);
     };
 
-    const quantityChanger = (e) => {
-        if (e.target.textContent === 'remove') {
-            
-        }  
-    };
-
-    const handleCartShow = () => {
-        setCartShow(!isCartShow);
-    };
+    const handleCartShow = () => setCartShow(!isCartShow);
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -79,6 +98,8 @@ export default function Shop() {
                                 order={order} 
                                 handleCartShow={handleCartShow}
                                 removeCartItem={removeCartItem}
+                                incrQuantity={incrQuantity}
+                                decrQuantity={decrQuantity}
                             />
             }
         </main>

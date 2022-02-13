@@ -5,15 +5,17 @@ export default function CartItem(props) {
         name,
         price,
         quantity,
-        removeCartItem = Function.prototype
+        removeCartItem = Function.prototype,
+        incrQuantity = Function.prototype,
+        decrQuantity = Function.prototype
     } = props;
     return (
         <li className="collection-item">
             {name} x 
-            <i className="material-icons cart-quantity">remove</i>
+            <i className="material-icons cart-quantity" onClick={() => {decrQuantity(id)}}>remove</i>
                 {quantity}
-            <i className="material-icons cart-quantity">add</i>
-                 = {price} ₽
+            <i className="material-icons cart-quantity" onClick={() => {incrQuantity(id)}}>add</i>
+                 = {price * quantity} ₽
             <span className="secondary-content">
                 <i className="material-icons cart-remove-item" onClick={() => removeCartItem(id)}>remove_shopping_cart</i>
             </span>

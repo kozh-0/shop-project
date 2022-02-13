@@ -4,9 +4,11 @@ export default function CartList(props) {
     const {
         order = [], 
         handleCartShow = Function.prototype,
-        removeCartItem = Function.prototype
+        removeCartItem = Function.prototype,
+        incrQuantity = Function.prototype,
+        decrQuantity = Function.prototype
     } = props;
-    const totalPrice = order.reduce((sum, el) => sum + el.price, 0);
+    const totalPrice = order.reduce((sum, el) => sum + el.price * el.quantity, 0);
 
     return (
         <ul className="collection cart-list">
@@ -21,6 +23,8 @@ export default function CartList(props) {
                         key={item.id} 
                         {...item} 
                         removeCartItem={removeCartItem}
+                        incrQuantity={incrQuantity}
+                        decrQuantity={decrQuantity}
                     />
                 )) : <li className="collection-item">Cart is empty</li>
             }

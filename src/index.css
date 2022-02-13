@@ -101,4 +101,5 @@ nav { padding: 0 15px }
   cursor: pointer;
   vertical-align: middle;
   color: #26a69a;
+  user-select: none;   
 }
