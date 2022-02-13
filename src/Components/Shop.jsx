@@ -5,6 +5,7 @@ import Preloader from "./Preloader";
 import GoodsList from "./GoodsList";
 import Cart from "./Cart";
 import CartList from "./CartList";
+import Alert from "./Alert";
 
 
 export default function Shop() {
@@ -12,6 +13,7 @@ export default function Shop() {
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isCartShow, setCartShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     // Приходит {id, name, price}
     const addToCart = (obj) => {
@@ -19,7 +21,10 @@ export default function Shop() {
         const objIndex = order.findIndex(el => el.id === obj.id);
 
         if (objIndex < 0) {
-            const newItem = { ...obj, quantity: 1 };
+            const newItem = {
+                ...obj, 
+                quantity: 1 
+            };
             setOrder( [...order, newItem] );
         } else {
             const newOrder = order.map((el, index) => {
@@ -36,6 +41,7 @@ export default function Shop() {
             
             setOrder(newOrder);
         }
+        setAlertName(obj.name);
     };
     
     const incrQuantity = (itemId) => {
@@ -73,6 +79,11 @@ export default function Shop() {
 
     const handleCartShow = () => setCartShow(!isCartShow);
 
+
+    const closeAlert = () => {
+        setAlertName('');
+    }
+
     useEffect(function getGoods() {
         fetch(API_URL, {
             headers: {'Authorization': API_KEY}
@@ -101,6 +112,9 @@ export default function Shop() {
                                 incrQuantity={incrQuantity}
                                 decrQuantity={decrQuantity}
                             />
+            }
+            {
+                alertName && <Alert name={alertName} closeAlert={closeAlert}/>
             }
         </main>
     )

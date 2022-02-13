@@ -28,7 +28,10 @@ export default function CartList(props) {
                     />
                 )) : <li className="collection-item">Cart is empty</li>
             }
-            <li className="collection-item active center">Total: {totalPrice} ₽</li>
+            <li className="collection-item active center checkout-and-total">
+                <span className="left">Total: {totalPrice} ₽</span>
+                <button className="secondary-content btn-small #ffffff black">Checkout</button>
+            </li>
         </ul>
     )
 }

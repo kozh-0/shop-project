@@ -11,9 +11,9 @@ export default function CartItem(props) {
     } = props;
     return (
         <li className="collection-item">
-            {name} x 
+            {name}  
             <i className="material-icons cart-quantity" onClick={() => {decrQuantity(id)}}>remove</i>
-                {quantity}
+                x{quantity}
             <i className="material-icons cart-quantity" onClick={() => {incrQuantity(id)}}>add</i>
                  = {price * quantity} ₽
             <span className="secondary-content">
