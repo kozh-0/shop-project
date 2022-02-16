@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
 
 export default function CartItem(props) {
     const {
@@ -9,6 +11,10 @@ export default function CartItem(props) {
         incrQuantity = Function.prototype,
         decrQuantity = Function.prototype
     } = props;
+
+    const {example} = useContext(ShopContext);
+    console.log(example);
+
     return (
         <li className="collection-item">
             {name}  

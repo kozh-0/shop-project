@@ -15,7 +15,7 @@ export default function Shop() {
     const [isCartShow, setCartShow] = useState(false);
     const [alertName, setAlertName] = useState('');
 
-    // Приходит {id, name, price}
+    // Приходит goods {id, name, price}
     const addToCart = (obj) => {
         // Нет = -1; Нашел = индекс элемента
         const objIndex = order.findIndex(el => el.id === obj.id);
@@ -78,11 +78,7 @@ export default function Shop() {
     };
 
     const handleCartShow = () => setCartShow(!isCartShow);
-
-
-    const closeAlert = () => {
-        setAlertName('');
-    }
+    const closeAlert = () => setAlertName('');
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -114,7 +110,7 @@ export default function Shop() {
                             />
             }
             {
-                alertName && <Alert name={alertName} closeAlert={closeAlert}/>
+                alertName && <Alert alertName={alertName} closeAlert={closeAlert}/>
             }
         </main>
     )
