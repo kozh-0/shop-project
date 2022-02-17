@@ -33,6 +33,9 @@ export const ContextProvider = ({children}) => {
     value.addToCart = (obj) => {
         dispatch({type: 'ADD_TO_CART', payload: obj})
     }
+    value.setGoods = (data) => {
+        dispatch({type: 'SET_GOODS', payload: data})
+    }
 
     return <ShopContext.Provider value={value}>
         ({children})

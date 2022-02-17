@@ -7,10 +7,10 @@ export default function GoodsItem(props) {
         name, 
         description, 
         price, 
-        full_background, 
-        addToCart = Function.prototype
+        full_background
     } = props;
 
+    const {addToCart} = useContext(ShopContext)
 
     return (
         <div className="card">

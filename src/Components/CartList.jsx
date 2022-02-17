@@ -1,13 +1,13 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
 import CartItem from "./CartItem"
 
-export default function CartList(props) {
+export default function CartList() {
     const {
         order = [], 
-        handleCartShow = Function.prototype,
-        removeCartItem = Function.prototype,
-        incrQuantity = Function.prototype,
-        decrQuantity = Function.prototype
-    } = props;
+        handleCartShow = Function.prototype, 
+    } = useContext(ShopContext)
+
     const totalPrice = order.reduce((sum, el) => sum + el.price * el.quantity, 0);
 
     return (
@@ -22,15 +22,15 @@ export default function CartList(props) {
                     <CartItem 
                         key={item.id} 
                         {...item} 
-                        removeCartItem={removeCartItem}
-                        incrQuantity={incrQuantity}
-                        decrQuantity={decrQuantity}
                     />
                 )) : <li className="collection-item">Cart is empty</li>
             }
             <li className="collection-item active center checkout-and-total">
                 <span className="left">Total: {totalPrice} ₽</span>
-                <button className="secondary-content btn-small #ffffff black">Checkout</button>
+                <button 
+                    className="secondary-content btn-small #ffffff black"
+                    onClick={() => console.log('No back-end')}
+                >Checkout</button>
             </li>
         </ul>
     )

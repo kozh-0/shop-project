@@ -1,5 +1,9 @@
-export default function Cart(props) {
-    const {quantity = 0, handleCartShow = Function.prototype} = props;
+import { useContext } from "react";
+import { ShopContext } from "../context";
+
+export default function Cart() {
+    const {order, handleCartShow = Function.prototype} = useContext(ShopContext);
+    const quantity = order.length;
 
     return (
         <div 
@@ -13,3 +17,4 @@ export default function Cart(props) {
         </div>
     );
 }
+
