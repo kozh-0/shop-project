@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
+
 export default function GoodsItem(props) {
     const { 
         id, 
@@ -7,6 +10,7 @@ export default function GoodsItem(props) {
         full_background, 
         addToCart = Function.prototype
     } = props;
+
 
     return (
         <div className="card">
