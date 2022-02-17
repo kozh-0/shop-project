@@ -15,7 +15,9 @@ export default function GoodsItem(props) {
     return (
         <div className="card">
             <div className="card-image">
-                <img src={full_background} alt={name}/>
+                <img 
+                src={full_background} 
+                alt={name}/>
             </div>
             <div className="card-content">
                 <span className="card-title">{name}</span>

@@ -5,7 +5,6 @@ export default function reducer(state, {type, payload}) {
                 ...state,
                 goods: payload || [],
                 loading: false
-
             }
         case 'ADD_TO_CART': {
             const objIndex = state.order.findIndex(el => el.id === payload.id);
