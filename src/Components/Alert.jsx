@@ -12,7 +12,7 @@ export default function Alert(props) {
 
     return (
         <div id="toast-container">
-            <div class="toast">{name} added to cart</div>
+            <div className="toast">{name} added to cart</div>
         </div>
     )
 }

@@ -8,6 +8,7 @@ export default function CartList(props) {
         incrQuantity = Function.prototype,
         decrQuantity = Function.prototype
     } = props;
+    
     const totalPrice = order.reduce((sum, el) => sum + el.price * el.quantity, 0);
 
     return (
@@ -26,7 +27,7 @@ export default function CartList(props) {
                         incrQuantity={incrQuantity}
                         decrQuantity={decrQuantity}
                     />
-                )) : <li className="collection-item">Cart is empty</li>
+                )) : <li className="collection-item center">Cart is empty</li>
             }
             <li className="collection-item active center checkout-and-total">
                 <span className="left">Total: {totalPrice} ₽</span>

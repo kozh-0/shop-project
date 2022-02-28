@@ -79,15 +79,13 @@ export default function Shop() {
 
     const handleCartShow = () => setCartShow(!isCartShow);
 
-
-    const closeAlert = () => {
-        setAlertName('');
-    }
+    const closeAlert = () => setAlertName('');
 
     useEffect(function getGoods() {
         fetch(API_URL, {
             headers: {'Authorization': API_KEY}
-        }).then((response) => response.json())
+        })
+        .then((response) => response.json())
         .then((data) => {
             data.featured && setGoods(data.featured);
             setLoading(false);
